@@ -74,9 +74,9 @@ export const products = [
     colors: [{ name: "Rosa", stock: 8 }, { name: "Marrón", stock: 28 }, { name: "Gris", stock: 30 }, { name: "Azul", stock: 27 }] },
   { id: 206, name: "Akira", category: "Morrales", image: Akiramorral9, destacado: false,
     colors: [{ name: "Rosa", stock: 60 }, { name: "Marrón", stock: 58 }, { name: "Beige", stock: 59 }, { name: "Gris", stock: 59 }, { name: "Azul", stock: 60 }] },
-  { id: 207, name: "Alaia", category: "Morrales", image: Alaiamorral13, destacado: false,
+  { id: 207, name: "Alaia", category: "Morrales", image: Alaiamorral13, destacado: true,
     colors: [{ name: "Rosa", stock: 56 }, { name: "Marrón", stock: 55 }, { name: "Beige", stock: 52 }, { name: "Gris", stock: 56 }, { name: "Azul", stock: 52 }] },
-  { id: 208, name: "Aldana", category: "Morrales", image: Aldanamorral9, destacado: false,
+  { id: 208, name: "Aldana", category: "Morrales", image: Aldanamorral9, destacado: true,
     colors: [{ name: "Rosa", stock: 20 }] },
   { id: 209, name: "Barbie", category: "Morrales", image: Barbiemorral10, destacado: false,
     colors: [{ name: "Negro", stock: 89 }, { name: "Azul Marino", stock: 57 }, { name: "Rojo", stock: 48 }, { name: "Beige", stock: 48 }] },
@@ -100,7 +100,7 @@ export const products = [
   // =========================================================================
   { id: 401, name: "Alessia", category: "SETX5", image: Alessiasetx56, destacado: false,
     colors: [{ name: "Rosa", stock: 11 }, { name: "Marrón", stock: 6 }, { name: "Gris", stock: 17 }, { name: "Azul", stock: 14 }] },
-  { id: 402, name: "Alex", category: "SETX5", image: Alexsetx516, destacado: false,
+  { id: 402, name: "Alex", category: "SETX5", image: Alexsetx516, destacado: true,
     colors: [{ name: "Rosa", stock: 35 }, { name: "Marrón", stock: 30 }, { name: "Beige", stock: 25 }, { name: "Gris", stock: 30 }, { name: "Azul", stock: 34 }] },
 
   // =========================================================================
