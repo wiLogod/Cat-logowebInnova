@@ -56,7 +56,7 @@ export const products = [
     colors: [{ name: "Negro", stock: 13 }] },
   { id: 106, name: "Aitana", category: "Carteras", image: Aitanacartera4, destacado: false,
     colors: [{ name: "Rosa", stock: 23 }, { name: "Azul", stock: 15 }] },
-  { id: 107, name: "Becky", category: "Carteras", image: Beckycartera13, destacado: true,
+  { id: 107, name: "Becky", category: "Carteras", image: Beckycartera13, destacado: false,
     colors: [{ name: "Negro", stock: 108 }, { name: "Azul Marino", stock: 72 }, { name: "Rojo", stock: 60 }, { name: "Beige", stock: 59 }] },
 
   // =========================================================================
@@ -82,7 +82,7 @@ export const products = [
     colors: [{ name: "Negro", stock: 89 }, { name: "Azul Marino", stock: 57 }, { name: "Rojo", stock: 48 }, { name: "Beige", stock: 48 }] },
   { id: 210, name: "Batia", category: "Morrales", image: Batiamorral11, destacado: false,
     colors: [{ name: "Negro", stock: 105 }, { name: "Azul Marino", stock: 72 }, { name: "Rojo", stock: 55 }, { name: "Beige", stock: 58 }] },
-  { id: 211, name: "Beca", category: "Morrales", image: Becamorral12, destacado: true,
+  { id: 211, name: "Beca", category: "Morrales", image: Becamorral12, destacado: false,
     colors: [{ name: "Negro", stock: 64 }, { name: "Azul Marino", stock: 48 }, { name: "Rojo", stock: 36 }, { name: "Beige", stock: 33 }] },
 
   // =========================================================================
@@ -106,7 +106,7 @@ export const products = [
   // =========================================================================
   // ✨ SETX4
   // =========================================================================
-  { id: 501, name: "Bela", category: "SETX4", image: Belasetx417, destacado: false,
+  { id: 501, name: "Bela", category: "SETX4", image: Belasetx417, destacado: true,
     colors: [{ name: "Rosa", stock: 48 }, { name: "Negro", stock: 14 }, { name: "Marrón", stock: 14 }] },
   { id: 502, name: "Belisa", category: "SETX4", image: Belisasetx419, destacado: false,
     colors: [{ name: "Beige", stock: 51 }, { name: "Marrón", stock: 73 }] },
