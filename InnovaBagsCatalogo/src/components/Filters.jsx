@@ -1,5 +1,5 @@
 export default function Filters({ category, setCategory }) {
-  const categories = ["All", "Destacados", "Bolsos", "Mochilas", "Carteras", "Morrales", "Billeteras"];
+  const categories = ["All", "Destacados", "Carteras", "Morrales", "Mochilas", "SETX4", "SETX5", "Etiquetas"];
   
 
   return (

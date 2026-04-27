@@ -15,6 +15,17 @@ export default function ProductModal({ product, onClose }) {
             <h2>{product.name}</h2>
             <p className="description">{product.description}</p>
             
+            {/* Muestra los colores en la ventana del producto */}
+            {product.colors && (
+              <div className="colors-container" style={{ marginBottom: "1.5rem" }}>
+                {product.colors.map((c, index) => (
+                  <span key={index} className="color-badge" style={{ fontSize: "0.9rem", padding: "0.3rem 0.6rem" }}>
+                    {c.name}: <b>{c.stock}</b>
+                  </span>
+                ))}
+              </div>
+            )}
+
             <a
               href={`https://wa.me/51999999999?text=Hola, quiero info sobre ${product.name}`}
               target="_blank"
