@@ -144,6 +144,7 @@ body {
 .load-more-container {
   display: flex;
   justify-content: center;
+  gap: 1rem; /* Espacio entre los botones */
   margin-bottom: 4rem;
 }
 
@@ -163,6 +164,17 @@ body {
 .load-more-btn:hover {
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 8px 20px rgba(255, 154, 158, 0.6);
+}
+
+/* Botón secundario: Cargar Menos */
+.load-less-btn {
+  background: #ffffff;
+  color: #d87093;
+  border: 2px solid #ffe4e1;
+  box-shadow: 0 4px 10px rgba(255, 192, 203, 0.15);
+}
+.load-less-btn:hover {
+  background: #fff0f5;
 }
 
 /* Product Card */

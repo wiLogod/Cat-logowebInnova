@@ -32,6 +32,10 @@ function App() {
     setVisibleCount((prev) => prev + 12); // Cargar 12 más cada vez
   };
 
+  const handleLoadLess = () => {
+    setVisibleCount((prev) => Math.max(prev - 12, 12)); // Quitar 12, pero nunca bajar de 12
+  };
+
   return (
     <div>
       <Navbar />
@@ -39,10 +43,15 @@ function App() {
       {/* Pasamos la función para abrir el modal cuando se haga clic en un producto */}
       <ProductList products={displayedProducts} onProductClick={setSelectedProduct} />
       
-      {/* Botón Cargar Más */}
-      {visibleCount < filteredProducts.length && (
+      {/* Botones Cargar Más y Cargar Menos */}
+      {(visibleCount < filteredProducts.length || visibleCount > 12) && (
         <div className="load-more-container">
-          <button className="load-more-btn" onClick={handleLoadMore}>Cargar más productos</button>
+          {visibleCount > 12 && (
+            <button className="load-more-btn load-less-btn" onClick={handleLoadLess}>Cargar menos</button>
+          )}
+          {visibleCount < filteredProducts.length && (
+            <button className="load-more-btn" onClick={handleLoadMore}>Cargar más productos</button>
+          )}
         </div>
       )}
 
