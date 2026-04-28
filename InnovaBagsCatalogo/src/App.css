@@ -8,10 +8,19 @@
 }
 
 body {
-  /* Degradado sutil de blanco a un gris perlado muy claro */
-  background: linear-gradient(135deg, #ffffff 0%, #e5e7eb 100%);
-  min-height: 100vh; /* Asegura que el degradado cubra toda la pantalla */
+  /* Degradado Mágico Animado (Aura Pastel) en Diagonal */
+  background: linear-gradient(135deg, #fff0f5, #ffe4e1, #f0f8ff, #e6e6fa);
+  background-size: 400% 400%;
+  animation: auraAnimada 15s ease infinite;
+  min-height: 100vh; 
   color: #333;
+}
+
+/* El motor que hace que el fondo se mueva en diagonal */
+@keyframes auraAnimada {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
 }
 
 /* Navbar */
@@ -93,27 +102,31 @@ body {
 
 .filters button {
   background-color: #ffffff;
-  border: 1px solid #e5e7eb;
-  color: #4b5563;
-  padding: 0.6rem 1.2rem;
+  border: 2px solid #ffe4e1; /* Borde rosa pastel */
+  color: #d87093; /* Texto rosado oscuro */
+  padding: 0.6rem 1.5rem; /* Un poco más de espacio a los lados */
   border-radius: 50px;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 700; /* Letra un poco más gordita */
   letter-spacing: 0.5px;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Rebote cute */
+  box-shadow: 0 4px 10px rgba(255, 192, 203, 0.15);
 }
 
 .filters button:hover {
-  background-color: #f3f4f6;
-  border-color: #d1d5db;
+  background-color: #fff0f5;
+  border-color: #ffb6c1;
+  transform: translateY(-3px) scale(1.05); /* Salto de burbuja */
+  box-shadow: 0 6px 15px rgba(255, 182, 193, 0.3);
 }
 
 .filters button.active {
-  background-color: #111827;
+  background: linear-gradient(135deg, #ff9a9e, #fecfef); /* Degradado mágico */
   color: #ffffff;
-  border-color: #111827;
+  border-color: transparent;
+  box-shadow: 0 6px 15px rgba(255, 154, 158, 0.4);
+  transform: scale(1.05); /* Se queda un poquito más grande */
 }
 
 /* Product Grid */
@@ -127,18 +140,44 @@ body {
   margin: 0 auto;
 }
 
+/* --- Botón Cargar Más --- */
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.load-more-btn {
+  background: linear-gradient(135deg, #ff9a9e, #fecfef);
+  color: #ffffff;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(255, 154, 158, 0.4);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.load-more-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 154, 158, 0.6);
+}
+
 /* Product Card */
 .card {
   background-color: #ffffff;
-  border-radius: 16px;
+  border-radius: 24px; /* Más CUTE y redondeado */
   padding: 1.2rem;
-  /* Sombra muy suave y difuminada que se ve natural */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  /* Sombra rosadita y cute */
+  box-shadow: 0 8px 24px rgba(255, 192, 203, 0.15);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  /* Borde súper sutil gris claro para delimitar sin ser agresivo */
-  border: 1px solid #f0f0f0;
+  /* Transición con efecto rebote (bouncy) */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  /* Borde rosado muy sutil */
+  border: 2px solid #fff0f5;
   position: relative;
   overflow: hidden; /* Para contener la línea animada */
 }
@@ -149,7 +188,7 @@ body {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 4px;
-  background: linear-gradient(135deg, #1d4ed8, #38bdf8); /* Tonos azules que combinan con tu logo */
+  background: linear-gradient(135deg, #ff9a9e, #fecfef); /* Pinks CUTE */
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
@@ -161,16 +200,16 @@ body {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 4px;
-  background: linear-gradient(135deg, #38bdf8, #1d4ed8); /* Colores invertidos para mayor contraste */
+  background: linear-gradient(135deg, #fecfef, #ff9a9e);
   transform: scaleX(0);
   transform-origin: right; /* Empieza desde el lado opuesto */
   transition: transform 0.4s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px); /* Efecto de elevación suave */
-  box-shadow: 0 15px 30px rgba(29, 78, 216, 0.08); /* Resplandor azulado muy elegante */
-  border-color: #e0e7ff;
+  transform: translateY(-8px) scale(1.02); /* Se levanta de forma "Bouncy" */
+  box-shadow: 0 15px 35px rgba(255, 182, 193, 0.35); /* Resplandor rosado */
+  border-color: #ffb6c1;
 }
 
 .card:hover::before {
@@ -185,11 +224,11 @@ body {
   width: 100%;
   height: 260px;
   object-fit: cover; 
-  border-radius: 10px;
+  border-radius: 18px; /* Fotografía más redondita */
   margin-bottom: 1rem;
-  border: 1px solid #e5e7eb; /* Gris plata muy elegante */
-  padding: 4px; /* Crea un pequeño marco blanco interno tipo fotografía */
-  background-color: #ffffff;
+  border: 3px solid #ffe4e1; /* Marco cute misty rose */
+  padding: 6px; 
+  background-color: #fffafa; /* Fondo tipo nieve/rosado suave */
   cursor: pointer; /* Prepara visualmente para el futuro Modal */
 }
 
@@ -213,19 +252,19 @@ body {
 .card a {
   display: inline-block;
   text-align: center;
-  background: linear-gradient(135deg, #25d366, #1ebd57); /* Degradado moderno */
+  background: linear-gradient(135deg, #6ee7b7, #10b981); /* Verde esmeralda suave y cute */
   color: #ffffff;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700; /* Letra más gordita */
   padding: 0.8rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.25); /* Resplandor verde brillante */
+  border-radius: 25px; /* Forma de píldora CUTE */
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Transición de rebote */
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
 }
 
 .card a:hover {
-  transform: translateY(-2px); /* El botón parece saltar hacia ti */
-  box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4); /* El resplandor se hace más fuerte */
+  transform: translateY(-4px) scale(1.05); /* Efecto burbuja saltarina */
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.4);
 }
 
 /* --- Estilos del Modal --- */
@@ -264,7 +303,7 @@ body {
 
 .modal-content {
   background-color: #ffffff;
-  border-radius: 16px;
+  border-radius: 28px; /* Bordes súper redonditos para el modal */
   max-width: 800px;
   width: 100%;
   position: relative;
@@ -276,21 +315,24 @@ body {
 .close-btn {
   position: absolute;
   top: 1rem; right: 1rem;
-  background: #f3f4f6;
+  background: #ffe4e1; /* Botón rosa claro */
   border: none;
   font-size: 1.2rem;
   font-weight: bold;
-  color: #333;
+  color: #d87093;
   width: 35px; height: 35px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.2s;
+  transition: transform 0.3s ease, background-color 0.2s;
 }
 
-.close-btn:hover { background-color: #e5e7eb; }
+.close-btn:hover { 
+  background-color: #ffb6c1; 
+  transform: rotate(90deg); /* Animación juguetona */
+}
 
 .modal-body {
   display: flex;
@@ -306,6 +348,10 @@ body {
   width: 100%;
   max-height: 400px;
   object-fit: cover;
+  border-radius: 20px; /* Imagen del modal CUTE */
+  padding: 8px;
+  border: 3px solid #ffe4e1;
+  background-color: #fffafa;
 }
 
 @media (min-width: 768px) {
@@ -327,20 +373,21 @@ body {
 .whatsapp-btn {
   display: inline-block;
   text-align: center;
-  background-color: #25d366;
+  background: linear-gradient(135deg, #6ee7b7, #10b981);
   color: #ffffff;
   text-decoration: none;
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 800; /* Súper gordita */
   padding: 1rem;
-  border-radius: 12px;
+  border-radius: 30px; /* Píldora gigante */
   margin-top: 1.5rem;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .whatsapp-btn:hover {
-  background-color: #1ebd57;
-  transform: scale(1.02); /* Efecto de que el botón crece un poquito */
+  transform: translateY(-4px) scale(1.03); /* Burbuja grande saltarina */
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
 }
 
 @keyframes modalFadeIn {
@@ -357,15 +404,91 @@ body {
 }
 
 .color-badge {
-  background-color: #f8fafc;
-  border: 1px solid #e5e7eb;
-  color: #6b7280;
+  background-color: #fff0f5; /* Fondo rosa pastel */
+  border: 1px solid #ffb6c1; /* Borde rosa claro */
+  color: #d87093; /* Texto rosado oscurito */
   font-size: 0.75rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 6px;
+  padding: 0.35rem 0.8rem; /* Forma de píldora */
+  border-radius: 20px; 
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.color-badge:hover {
+  transform: scale(1.05) translateY(-2px); /* Se levanta un poquito como un botón */
+}
+
+/* Estilo cuando seleccionas un color */
+.color-badge.selected {
+  background: linear-gradient(135deg, #ff9a9e, #fecfef); /* Degradado mágico */
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 10px rgba(255, 154, 158, 0.4);
+  transform: scale(1.05);
+}
+
+.color-badge.selected b {
+  color: #ffffff;
 }
 
 .color-badge b {
-  color: #111827;
-  font-weight: 700;
+  color: #c71585; /* Número más intenso */
+  font-weight: 800; /* Letra bien gordita */
+}
+
+/* Estilo para la burbuja de color */
+.color-bubble {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15); /* Borde sutil por si el color es muy claro como el Beige */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Estilos para estado de Stock */
+.color-badge.out-of-stock {
+  opacity: 0.65; 
+  background-color: #f3f4f6;
+  border-color: #e5e7eb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+.color-badge.out-of-stock b {
+  color: #4b5563; 
+}
+
+.color-badge.low-stock {
+  border-color: #fca5a5;
+  background-color: #fef2f2; /* Fondo rojizo suave */
+  color: #dc2626; 
+}
+.color-badge.low-stock b {
+  color: #b91c1c; 
+}
+
+/* --- Botón Ir Arriba --- */
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: linear-gradient(135deg, #ff9a9e, #fecfef);
+  color: #ffffff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 999; /* Para que siempre esté por encima de las tarjetas */
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-6px) scale(1.1); /* Rebote hacia arriba */
+  box-shadow: 0 8px 25px rgba(255, 154, 158, 0.6);
 }
