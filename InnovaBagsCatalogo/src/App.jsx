@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Filters from "./components/Filters";
+import Searchbar from "./components/Searchbar";
 import ProductList from "./components/ProductList";
 import ProductModal from "./components/ProductModal";
 import { products } from "./data/products";
@@ -10,19 +11,27 @@ import "./App.css";
 function App() {
   const [category, setCategory] = useState("All");
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [searchTerm, setSearchTerm] = useState(""); // Estado para el término de búsqueda
   const [visibleCount, setVisibleCount] = useState(12); // Mostrar 12 productos inicialmente
 
-  const filteredProducts =
+  // 1. Primero, filtramos por categoría
+  const categoryFilteredProducts =
     category === "All"
       ? products
       : category === "Destacados"
       ? products.filter((p) => p.destacado)
       : products.filter((p) => p.category === category);
 
+  // 2. Luego, filtramos el resultado por el término de búsqueda
+  const filteredProducts = categoryFilteredProducts.filter((p) =>
+    p.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   // Función para cambiar de categoría y reiniciar la cuenta de productos
   const handleCategoryChange = (newCategory) => {
     setCategory(newCategory);
     setVisibleCount(12);
+    setSearchTerm(""); // Limpiar la búsqueda al cambiar de categoría
   };
 
   // Cortar la lista de productos para mostrar solo los visibles
@@ -39,6 +48,7 @@ function App() {
   return (
     <div>
       <Navbar />
+      <Searchbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <Filters category={category} setCategory={handleCategoryChange} />
       {/* Pasamos la función para abrir el modal cuando se haga clic en un producto */}
       <ProductList products={displayedProducts} onProductClick={setSelectedProduct} />

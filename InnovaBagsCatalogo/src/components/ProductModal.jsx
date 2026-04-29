@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { colorHex } from "./colors";
 
 export default function ProductModal({ product, onClose }) {
   const [selectedColor, setSelectedColor] = useState("");
+  const [zoomStyle, setZoomStyle] = useState({ transformOrigin: "center center", transform: "scale(1)" });
 
   // Función para cerrar la ventana y limpiar el color seleccionado
   const handleClose = () => {
     setSelectedColor("");
     onClose();
   };
+
+  // Cerrar el modal al presionar la tecla Escape
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        handleClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   // Si no hay producto seleccionado, no renderiza nada
   if (!product) return null;
@@ -21,6 +33,26 @@ export default function ProductModal({ product, onClose }) {
     ? `Hola, quiero info sobre *${product.name}* en color *${selectedColor}*.\n\nPuedes ver la foto aquí:\n${fullImageUrl}`
     : `Hola, quiero info sobre *${product.name}*.\n\nPuedes ver la foto aquí:\n${fullImageUrl}`;
 
+  // Funciones para el efecto Lupa (Zoom dinámico)
+  const handleZoom = (e) => {
+    // Soporte para mouse (computadoras) y touch (celulares)
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = ((clientX - left) / width) * 100;
+    const y = ((clientY - top) / height) * 100;
+    
+    setZoomStyle({
+      transformOrigin: `${x}% ${y}%`,
+      transform: "scale(2.2)" // Nivel de acercamiento (220%)
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setZoomStyle({ transformOrigin: "center center", transform: "scale(1)" });
+  };
+
   return (
     // Al hacer clic en el fondo oscuro, se cierra el modal
     <div className="modal-overlay" onClick={handleClose}>
@@ -29,10 +61,22 @@ export default function ProductModal({ product, onClose }) {
         <button className="close-btn" onClick={handleClose}>X</button>
         
         <div className="modal-body">
-          <img src={product.image} alt={product.name} />
+          {/* Contenedor de la imagen con el rastreador de Lupa */}
+          <div 
+            className="image-zoom-container"
+            onMouseMove={handleZoom}
+            onTouchMove={handleZoom}
+            onMouseLeave={handleMouseLeave}
+            onTouchEnd={handleMouseLeave}
+          >
+            <img src={product.image} alt={product.name} style={zoomStyle} />
+            <span className="lupa-hint">🔍 Pasa el mouse</span>
+          </div>
+
           <div className="modal-info">
             <h2>{product.name}</h2>
-            <p className="description">{product.description}</p>
+            {/* Solo muestra la descripción si existe en los datos del producto */}
+            {product.description && <p className="description">{product.description}</p>}
             
             {/* Muestra los colores en la ventana del producto */}
             {product.colors && (

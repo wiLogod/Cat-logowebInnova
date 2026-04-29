@@ -90,6 +90,37 @@ body {
   100% { transform: scale(1.15); } /* Se acerca lentamente un 15% */
 }
 
+/* --- Barra de Búsqueda --- */
+.search-container {
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+  margin-bottom: 1.5rem; /* Espacio antes de los filtros */
+}
+
+.search-input {
+  width: 100%;
+  max-width: 500px; /* Ancho máximo para que no sea gigante en pantallas grandes */
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  color: #374151;
+  background-color: #ffffff;
+  border: 2px solid #ffe4e1;
+  border-radius: 50px; /* Forma de píldora CUTE */
+  box-shadow: 0 4px 10px rgba(255, 192, 203, 0.15);
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: #d1d5db;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #ff9a9e; /* Borde rosado más intenso al hacer foco */
+  box-shadow: 0 6px 20px rgba(255, 154, 158, 0.4);
+}
+
 /* Filters */
 .filters {
   display: flex;
@@ -319,7 +350,8 @@ body {
   max-width: 800px;
   width: 100%;
   position: relative;
-  overflow: hidden;
+  max-height: 90vh; /* Evita que crezca más que la pantalla (90% del alto) */
+  overflow-y: auto; /* Permite hacer scroll dentro de la ventana si hay mucho texto */
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
   animation: modalFadeIn 0.3s ease-out;
 }
@@ -327,6 +359,7 @@ body {
 .close-btn {
   position: absolute;
   top: 1rem; right: 1rem;
+  z-index: 10; /* Asegura que la 'X' siempre resalte por encima de la imagen o texto */
   background: #ffe4e1; /* Botón rosa claro */
   border: none;
   font-size: 1.2rem;
@@ -356,18 +389,54 @@ body {
   .modal-body { flex-direction: row; }
 }
 
-.modal-body img {
+/* --- Contenedor de Imagen con Efecto Lupa --- */
+.image-zoom-container {
   width: 100%;
   max-height: 400px;
-  object-fit: cover;
-  border-radius: 20px; /* Imagen del modal CUTE */
-  padding: 8px;
   border: 3px solid #ffe4e1;
   background-color: #fffafa;
+  border-radius: 20px;
+  padding: 8px;
+  position: relative;
+  overflow: hidden; /* Esto evita que al hacer zoom la imagen se salga del cuadro */
+  cursor: zoom-in;
+  display: flex;
+  flex-shrink: 0;
 }
 
 @media (min-width: 768px) {
-  .modal-body img { width: 50%; max-height: 500px; }
+  .image-zoom-container { width: 50%; max-height: 500px; }
+}
+
+.image-zoom-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px; /* Un poco más pequeño que el contenedor para respetar el padding */
+  transition: transform 0.15s ease-out; /* Suavidad al entrar o salir del zoom */
+  will-change: transform;
+}
+
+/* Cartelito de ayuda "🔍 Pasa el mouse" */
+.lupa-hint {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #d87093;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(255, 192, 203, 0.3);
+  pointer-events: none; /* Para que el cartelito no interfiera con el mouse */
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+/* Ocultamos el cartelito cuando el usuario está usando la lupa */
+.image-zoom-container:hover .lupa-hint {
+  opacity: 0;
 }
 
 .modal-info {
@@ -379,7 +448,12 @@ body {
 }
 
 .modal-info h2 { font-size: 2rem; color: #111827; margin-bottom: 0.5rem; }
-.modal-info .description { font-size: 1.1rem; color: #4b5563; line-height: 1.6; }
+.modal-info .description { 
+  font-size: 1.1rem; 
+  color: #4b5563; 
+  line-height: 1.6; 
+  white-space: pre-wrap; /* Mágia para que respete los saltos de línea */
+}
 
 /* Botón gigante de WhatsApp en el Modal */
 .whatsapp-btn {
