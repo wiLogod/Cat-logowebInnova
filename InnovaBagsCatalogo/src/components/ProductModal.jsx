@@ -14,8 +14,8 @@ export default function ProductModal({ product, onClose }) {
   if (!product) return null;
 
   const whatsappMessage = selectedColor
-    ? `Hola, quiero info sobre ${product.name} en color ${selectedColor}`
-    : `Hola, quiero info sobre ${product.name}`;
+    ? `Hola, quiero info sobre ${product.name} en color ${selectedColor}. Imagen: ${product.image}`
+    : `Hola, quiero info sobre ${product.name}. Imagen: ${product.image}`;
 
   return (
     // Al hacer clic en el fondo oscuro, se cierra el modal
