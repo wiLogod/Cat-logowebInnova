@@ -41,7 +41,7 @@ const ProductCard = memo(function ProductCard({ product, onProductClick }) {
                   className="color-bubble" 
                   style={{ backgroundColor: colorHex[c.name] || "#e5e7eb" }}
                 ></span>
-                {c.name}: <b>{isOutOfStock ? "Agotado" : stockNum}</b>
+                {c.name} {isOutOfStock && <b>(Agotado)</b>}
                 {isLowStock && " 🔥"}
               </span>
             );
