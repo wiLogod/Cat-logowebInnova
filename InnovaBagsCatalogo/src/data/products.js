@@ -97,7 +97,7 @@ export const products = [
   // =========================================================================
   // 🏫 MOCHILAS
   // =========================================================================
-  { id: 302, name: "Ainara", category: "Mochilas", image: Ainaramochila3, destacado: false,
+  { id: 302, name: "Ainaaaaaa", category: "Mochilas", image: Ainaramochila3, destacado: false,
     description: "Tu complemento perfecto para poder salir de casa llevando todo lo necesario como tu billetera, cosméticos, teléfono, etc.\n\n✨ Material: Cuero P.U\n📏 Dimensiones: 31 x 16 x 34 cm\n\n🌟 Características:\n• Fácil de limpiar\n• Con doble forro\n• Cierres de metal\n• Correa de cadena con asa de P.U\n• Incluye 2 bolsillos internos uno de ellos con cierre, 3 bolsillos externos con cierre",
     colors: [{ name: "Azul", stock: 29 }, { name: "Beige", stock: 28 }, { name: "Verde", stock: 30 }, { name: "Negro", stock: 55 }] },
   { id: 303, name: "Barbara", category: "Mochilas", image: Barbaramochila4, destacado: false,
