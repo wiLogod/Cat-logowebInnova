@@ -4,9 +4,13 @@ import { colorHex } from "./colors";
 const ProductCard = memo(function ProductCard({ product, onProductClick }) {
   const [selectedColor, setSelectedColor] = useState("");
 
+  // Obtenemos la URL pública de tu página web (Vercel) para que WhatsApp pueda mostrar la miniatura
+  const baseUrl = window.location.origin;
+  const fullImageUrl = new URL(product.image, baseUrl).href;
+
   const whatsappMessage = selectedColor
-    ? `Hola, quiero info sobre ${product.name} en color ${selectedColor}`
-    : `Hola, quiero info sobre ${product.name}`;
+    ? `Hola, quiero info sobre *${product.name}* en color *${selectedColor}*.\n\nPuedes ver la foto aquí:\n${fullImageUrl}`
+    : `Hola, quiero info sobre *${product.name}*.\n\nPuedes ver la foto aquí:\n${fullImageUrl}`;
 
   return (
     <div className="card">

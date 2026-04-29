@@ -13,9 +13,13 @@ export default function ProductModal({ product, onClose }) {
   // Si no hay producto seleccionado, no renderiza nada
   if (!product) return null;
 
+  // Obtenemos la URL pública de tu página web (Vercel) para que WhatsApp pueda mostrar la miniatura
+  const baseUrl = window.location.origin;
+  const fullImageUrl = new URL(product.image, baseUrl).href;
+
   const whatsappMessage = selectedColor
-    ? `Hola, quiero info sobre ${product.name} en color ${selectedColor}. Imagen: ${product.image}`
-    : `Hola, quiero info sobre ${product.name}. Imagen: ${product.image}`;
+    ? `Hola, quiero info sobre *${product.name}* en color *${selectedColor}*.\n\nPuedes ver la foto aquí:\n${fullImageUrl}`
+    : `Hola, quiero info sobre *${product.name}*.\n\nPuedes ver la foto aquí:\n${fullImageUrl}`;
 
   return (
     // Al hacer clic en el fondo oscuro, se cierra el modal
